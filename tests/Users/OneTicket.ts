@@ -38,7 +38,7 @@ describe("Ticket", async () => {
       console.log("-----------------------------------------------------")
       console.log("PDA: ", AccountPk.toString());
       console.log("-----------------------------------------------------")
-      console.log("Total stake: ", (balance / LAMPORTS_PER_SOL).toString(), "SOL");
+      console.log("Total stake: ", ((balance / LAMPORTS_PER_SOL)- 0.06830544).toString(), "SOL");
       console.log("-----------------------------------------------------")
       console.log("Total tickets: ", (Account.players.length).toString());
       console.log("-----------------------------------------------------")

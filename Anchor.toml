@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.devnet]
-solotery = "FW4QsVmHJXHnD9xYURD18VFJPkanuhf9ygaJJZR8j6P5"
+solotery = "CEBJ4Yj5z4dB3ahZBVTbo6kUmykh3HqibCjyNzRugUmj"
 
 [registry]
 url = "https://api.apr.dev"
@@ -17,3 +17,4 @@ winner = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Blockchain/Choos
 ticket = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Users/OneTicket.ts"
 check = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Users/CheckIt.ts"
 send = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Blockchain/SendAmountToWinner.ts"
+buy = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Users/BuyShare.ts"

@@ -22,21 +22,13 @@ describe("SOLotery", () => {
     const connection = new Connection("https://api.devnet.solana.com");
     it("Check the state of the lotery", async () => {
         let balance = await connection.getBalance(AccountPk); 
-        const tx = await program.methods.checkIt()
-        .accounts({
-        solotery: AccountPk,
-        user: wallet.publicKey,
-        }).signers([wallet.payer]).rpc();
         const Account = await program.account.soLotery.fetch(AccountPk);
-        console.log("-----------------------------------------------------")
-        console.log("Tx: ",tx);
-        console.log("-----------------------------------------------------")
         console.log("-----------------------------------------------------")
         console.log("Authority: ", Account.authority.toBase58());
         console.log("-----------------------------------------------------")
         console.log("PDA: ", AccountPk.toString());
         console.log("-----------------------------------------------------")
-        console.log("Total stake: ", (balance / LAMPORTS_PER_SOL).toString(), "SOL");
+        console.log("Total stake: ", ((balance / LAMPORTS_PER_SOL)- 0.06830544).toString(), "SOL");
         console.log("-----------------------------------------------------")
         console.log("Total tickets: ", (Account.players.length).toString());
         console.log("-----------------------------------------------------")

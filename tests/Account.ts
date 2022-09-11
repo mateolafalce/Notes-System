@@ -4,15 +4,20 @@ anchor.setProvider(provider);
 export const wallet = provider.wallet as anchor.Wallet;
 
 export const AccountPk = new anchor.web3.PublicKey(
-    "DupSpXvCQ3yANQzxVLFPbvZFiq3A4ue8HQvTWyybybh2"
-);
-
-export const PDAWinner = new anchor.web3.PublicKey(
-    "9WT3UnC2m98wgJm7TmPsfbcoN98CaNfEDmghzsSkdX3B"
-);
-export const Winner = new anchor.web3.PublicKey(
-    "Ciz4goiuoUCDcLea6fEJGhVpc8MGCeHDnczDm44Nqkbq"
+    "zsxpPUaJdScwXWa3ETcuRwxP8Bwm7oWaosfZdZRywmn"
 );
 export const CreatorPublicKey = new anchor.web3.PublicKey(
     "HiHyNHnwSzFprUdMERFbUJNTcuoD375oE6qDfuytmUYL"
+);
+export const Owner1 = new anchor.web3.PublicKey(
+    "NqXx91Lk2qn9V1W3kEvBVmp1fzXLEGTSGkd9yungtk8"
+);
+export const Owner2 = new anchor.web3.PublicKey(
+    "NqXx91Lk2qn9V1W3kEvBVmp1fzXLEGTSGkd9yungtk8"
+);
+export const Owner3 = new anchor.web3.PublicKey(
+    "NqXx91Lk2qn9V1W3kEvBVmp1fzXLEGTSGkd9yungtk8"
+);
+export const Owner4 = new anchor.web3.PublicKey(
+    "NqXx91Lk2qn9V1W3kEvBVmp1fzXLEGTSGkd9yungtk8"
 );
