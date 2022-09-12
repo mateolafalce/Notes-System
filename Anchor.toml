@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.devnet]
-solotery = "CEBJ4Yj5z4dB3ahZBVTbo6kUmykh3HqibCjyNzRugUmj"
+solotery = "59bR8YyUaa2tV4Rn2NJs3TdSVY3UMoDVe7E8Ly6nKAot"
 
 [registry]
 url = "https://api.apr.dev"

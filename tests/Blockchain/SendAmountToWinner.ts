@@ -3,10 +3,6 @@ import { Program } from "@project-serum/anchor";
 import { Solotery } from "/mnt/c/Users/Mateo/solotery/target/types/solotery";
 import { AccountPk } from "/mnt/c/Users/Mateo/solotery/tests/Account";
 import { wallet } from "/mnt/c/Users/Mateo/solotery/tests/Account";
-import { Owner1 } from "/mnt/c/Users/Mateo/solotery/tests/Account";
-import { Owner2 } from "/mnt/c/Users/Mateo/solotery/tests/Account";
-import { Owner3 } from "/mnt/c/Users/Mateo/solotery/tests/Account";
-import { Owner4 } from "/mnt/c/Users/Mateo/solotery/tests/Account";
 
 describe("Send amount to winner", async () => {
   const program = anchor.workspace.Solotery as Program<Solotery>;
@@ -15,10 +11,13 @@ describe("Send amount to winner", async () => {
     const tx = await program.methods.sendAmountToWinner()
     .accounts({
         solotery: AccountPk,
-        owner1: Owner1,
-        owner2: Owner2,
-        owner3: Owner3,
-        owner4: Owner4,
+        owner1: PDAccount.owner1,
+        owner2: PDAccount.owner2,
+        owner3: PDAccount.owner3,
+        owner4: PDAccount.owner4,
+        owner5: PDAccount.owner5,
+        owner6: PDAccount.owner6,
+        owner7: PDAccount.owner7,
         winnerPublickey: PDAccount.winnerPublickey,
         soloteryAuthority: wallet.publicKey,
       }).rpc();

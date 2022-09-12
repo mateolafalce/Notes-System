@@ -7,7 +7,7 @@ use anchor_lang::{
 use std::str::FromStr;
 use oorandom;
 
-declare_id!("CEBJ4Yj5z4dB3ahZBVTbo6kUmykh3HqibCjyNzRugUmj");
+declare_id!("59bR8YyUaa2tV4Rn2NJs3TdSVY3UMoDVe7E8Ly6nKAot");
 
 #[program]
 pub mod solotery {
@@ -17,7 +17,7 @@ pub mod solotery {
     ) -> Result<()> {
         require!(ctx.accounts.user.key() == Pubkey::from_str("NqXx91Lk2qn9V1W3kEvBVmp1fzXLEGTSGkd9yungtk8").unwrap(), ErrorCode::YouAreNotSOLotery);
         let solotery: &mut Account<SoLotery> = &mut ctx.accounts.solotery;
-        let (_stake_pda, bump) = Pubkey::find_program_address(&[b"SOLotery", ctx.accounts.user.key().as_ref()], &Pubkey::from_str("CEBJ4Yj5z4dB3ahZBVTbo6kUmykh3HqibCjyNzRugUmj").unwrap());
+        let (_stake_pda, bump) = Pubkey::find_program_address(&[b"SOLotery", ctx.accounts.user.key().as_ref()], &Pubkey::from_str("59bR8YyUaa2tV4Rn2NJs3TdSVY3UMoDVe7E8Ly6nKAot").unwrap());
         solotery.authority = ctx.accounts.user.key();
         solotery.choose_winner_only_one_time = 0;
         solotery.bump_original = bump;
@@ -27,6 +27,9 @@ pub mod solotery {
         solotery.best_proposal2 = 5000;
         solotery.best_proposal3 = 5000;
         solotery.best_proposal4 = 5000;
+        solotery.best_proposal5 = 5000;
+        solotery.best_proposal6 = 5000;
+        solotery.best_proposal7 = 5000;
         Ok(())
     }
     pub fn ticket(
@@ -82,6 +85,30 @@ pub mod solotery {
                 solotery.best_proposal4 = amount;
                 solotery.owner4 = ctx.accounts.from.key();
         }
+        if share_number == 5 {
+            require!(amount > solotery.best_proposal5, ErrorCode::AmountError);
+            anchor_lang::solana_program::program::invoke(
+                &system_instruction::transfer(&ctx.accounts.from.key(), &creator, amount),
+                &[ctx.accounts.from.to_account_info(), ctx.accounts.creator.to_account_info().clone()],).expect("Error");
+                solotery.best_proposal5 = amount;
+                solotery.owner5 = ctx.accounts.from.key();
+        }
+        if share_number == 6 {
+            require!(amount > solotery.best_proposal6, ErrorCode::AmountError);
+            anchor_lang::solana_program::program::invoke(
+                &system_instruction::transfer(&ctx.accounts.from.key(), &creator, amount),
+                &[ctx.accounts.from.to_account_info(), ctx.accounts.creator.to_account_info().clone()],).expect("Error");
+                solotery.best_proposal6 = amount;
+                solotery.owner6 = ctx.accounts.from.key();
+        }
+        if share_number == 7 {
+            require!(amount > solotery.best_proposal7, ErrorCode::AmountError);
+            anchor_lang::solana_program::program::invoke(
+                &system_instruction::transfer(&ctx.accounts.from.key(), &creator, amount),
+                &[ctx.accounts.from.to_account_info(), ctx.accounts.creator.to_account_info().clone()],).expect("Error");
+                solotery.best_proposal7 = amount;
+                solotery.owner7 = ctx.accounts.from.key();
+        }
         Ok(())
     }
     pub fn choose_winner(
@@ -115,9 +142,9 @@ pub mod solotery {
         let winner: &mut AccountInfo = &mut ctx.accounts.winner_publickey;
         fn to_f64(amount: u64) -> f64 {return amount as f64}
         fn percent(amount: f64) -> u64 {((amount / 100.0)* 2.0).round() as u64}  
-        let owners_amount = percent(to_f64(AccountInfo::lamports(&solotery.to_account_info()) - 69419050));
-        let owners_dividend: u64 = owners_amount / 4; 
-        let winner_reward: u64 = AccountInfo::lamports(&solotery.to_account_info()) - 69419050 - owners_amount; 
+        let owners_amount = percent(to_f64(AccountInfo::lamports(&solotery.to_account_info()) - 70254250));
+        let owners_dividend: u64 = owners_amount / 7; 
+        let winner_reward: u64 = AccountInfo::lamports(&solotery.to_account_info()) - 70254250 - owners_amount; 
         **solotery.to_account_info().try_borrow_mut_lamports()? -= owners_dividend;
         **ctx.accounts.owner1.try_borrow_mut_lamports()? += owners_dividend;
         **solotery.to_account_info().try_borrow_mut_lamports()? -= owners_dividend;
@@ -126,6 +153,12 @@ pub mod solotery {
         **ctx.accounts.owner3.try_borrow_mut_lamports()? += owners_dividend;
         **solotery.to_account_info().try_borrow_mut_lamports()? -= owners_dividend;
         **ctx.accounts.owner4.try_borrow_mut_lamports()? += owners_dividend;
+        **solotery.to_account_info().try_borrow_mut_lamports()? -= owners_dividend;
+        **ctx.accounts.owner5.try_borrow_mut_lamports()? += owners_dividend;
+        **solotery.to_account_info().try_borrow_mut_lamports()? -= owners_dividend;
+        **ctx.accounts.owner6.try_borrow_mut_lamports()? += owners_dividend;
+        **solotery.to_account_info().try_borrow_mut_lamports()? -= owners_dividend;
+        **ctx.accounts.owner7.try_borrow_mut_lamports()? += owners_dividend;
         **solotery.to_account_info().try_borrow_mut_lamports()? -= winner_reward;
         **winner.to_account_info().try_borrow_mut_lamports()? += winner_reward;
         solotery.choose_winner_only_one_time = solotery.choose_winner_only_one_time - 1;
@@ -137,7 +170,7 @@ pub mod solotery {
 }
 #[derive(Accounts)]
 pub struct Create<'info> {
-    #[account(init, seeds = [b"SOLotery", user.key().as_ref()], bump, payer = user, space = 9846)]
+    #[account(init, seeds = [b"SOLotery", user.key().as_ref()], bump, payer = user, space = 9966)]
     pub solotery: Account<'info, SoLotery>,
     #[account(mut)]
     pub user: Signer<'info>,
@@ -192,6 +225,15 @@ pub struct SendAmountToWinner<'info> {
     pub owner4: AccountInfo<'info>,
     /// CHECK: This is not dangerous because we don't read or write from this accoun
     #[account(mut)]
+    pub owner5: AccountInfo<'info>,
+    /// CHECK: This is not dangerous because we don't read or write from this accoun
+    #[account(mut)]
+    pub owner6: AccountInfo<'info>,
+    /// CHECK: This is not dangerous because we don't read or write from this accoun
+    #[account(mut)]
+    pub owner7: AccountInfo<'info>,
+    /// CHECK: This is not dangerous because we don't read or write from this accoun
+    #[account(mut)]
     pub winner_publickey: AccountInfo<'info>,
     #[account(mut)]
     pub solotery_authority: Signer<'info>,
@@ -211,7 +253,13 @@ pub struct SoLotery {
     pub owner3: Pubkey,
     pub best_proposal3: u64,
     pub owner4: Pubkey,
-    pub best_proposal4: u64
+    pub best_proposal4: u64,
+    pub owner5: Pubkey,
+    pub best_proposal5: u64,
+    pub owner6: Pubkey,
+    pub best_proposal6: u64,
+    pub owner7: Pubkey,
+    pub best_proposal7: u64,
 }
 #[error_code]
 pub enum ErrorCode {

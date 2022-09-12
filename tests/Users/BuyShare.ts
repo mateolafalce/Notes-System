@@ -10,7 +10,7 @@ describe("Buy Share", async () => {
   const program = anchor.workspace.Solotery as Program<Solotery>;
   it('Buying ...', async () => {
     const tx = await program.methods.buyShare(
-        4,
+        7,
         new anchor.BN(6000)
     ).accounts({
         solotery: AccountPk,
@@ -37,6 +37,18 @@ describe("Buy Share", async () => {
       console.log("Authority 4: ", Account.owner4.toString());
       console.log("-----------------------------------------------------")
       console.log("Best Proposal 4: ", ((Account.bestProposal4 / LAMPORTS_PER_SOL) .toString()), "SOL");
+      console.log("-----------------------------------------------------")
+      console.log("Authority 5: ", Account.owner5.toString());
+      console.log("-----------------------------------------------------")
+      console.log("Best Proposal 5: ", ((Account.bestProposal5 / LAMPORTS_PER_SOL) .toString()), "SOL");
+      console.log("-----------------------------------------------------")
+      console.log("Authority 6: ", Account.owner5.toString());
+      console.log("-----------------------------------------------------")
+      console.log("Best Proposal 6: ", ((Account.bestProposal6 / LAMPORTS_PER_SOL) .toString()), "SOL");
+      console.log("-----------------------------------------------------")
+      console.log("Authority 7: ", Account.owner5.toString());
+      console.log("-----------------------------------------------------")
+      console.log("Best Proposal 7: ", ((Account.bestProposal7 / LAMPORTS_PER_SOL) .toString()), "SOL");
       console.log("-----------------------------------------------------")
   });
 });
