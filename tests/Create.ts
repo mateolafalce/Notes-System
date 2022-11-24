@@ -10,7 +10,6 @@ describe("Creating PDA", () => {
       .findProgramAddress(
         [
           anchor.utils.bytes.utf8.encode("SOLotery"),
-          wallet.publicKey.toBuffer(),
         ],
         program.programId
       )
@@ -24,5 +23,6 @@ describe("Creating PDA", () => {
       console.log("PDA: ", SOLotery.toBase58());
       console.log("---------------------------------------------") 
       console.log("Your transaction signature", tx);
+      console.log("---------------------------------------------") 
     });
 })

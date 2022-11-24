@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.devnet]
-solotery = "59bR8YyUaa2tV4Rn2NJs3TdSVY3UMoDVe7E8Ly6nKAot"
+solotery = "FMz7qxxUeqgCKZL2z96nBhp6mpyisdVEEuS4ppZG3bmH"
 
 [registry]
 url = "https://api.apr.dev"
@@ -12,9 +12,6 @@ cluster = "devnet"
 wallet = "/home/mateo/.config/solana/id.json"
 
 [scripts]
-create = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Blockchain/Create.ts"
-winner = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Blockchain/ChooseWinner.ts"
-ticket = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Users/OneTicket.ts"
-check = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Users/CheckIt.ts"
-send = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Blockchain/SendAmountToWinner.ts"
-buy = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Users/BuyShare.ts"
+create = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Create.ts"
+ticket = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Ticket.ts"
+check = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Check.ts"
