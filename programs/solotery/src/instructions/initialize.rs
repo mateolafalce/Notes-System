@@ -9,7 +9,7 @@ pub fn create_stake(
     ctx: Context<Create>
 ) -> Result<()> {
     let solotery: &mut Account<SoLotery> = &mut ctx.accounts.solotery;
-    let (_stake_pda, bump) = Pubkey::find_program_address(&[b"SOLotery"], &Pubkey::from_str("FMz7qxxUeqgCKZL2z96nBhp6mpyisdVEEuS4ppZG3bmH").unwrap());
+    let (_stake_pda, bump) = Pubkey::find_program_address(&[b"SOLotery"], ctx.program_id);
     solotery.bump_original = bump;
     solotery.players1 = [].to_vec();
     solotery.players2 = [].to_vec();
