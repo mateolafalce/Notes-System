@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.devnet]
-solotery = "FMz7qxxUeqgCKZL2z96nBhp6mpyisdVEEuS4ppZG3bmH"
+commonmarket = "Cm1A1eSrCVbKmpcM944cMgDMbWBsDq9c1tyD1sKwJD1G"
 
 [registry]
 url = "https://api.apr.dev"
@@ -12,6 +12,7 @@ cluster = "devnet"
 wallet = "/home/mateo/.config/solana/id.json"
 
 [scripts]
-create = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Create.ts"
-ticket = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Ticket.ts"
+create = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/MainAccount.ts"
+sell = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Sell.ts"
 check = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Check.ts"
+exchange = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Exchange.ts"
