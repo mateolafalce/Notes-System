@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.devnet]
-commonmarket = "Cm1A1eSrCVbKmpcM944cMgDMbWBsDq9c1tyD1sKwJD1G"
+notes_system = "Cm1A1eSrCVbKmpcM944cMgDMbWBsDq9c1tyD1sKwJD1G"
 
 [registry]
 url = "https://api.apr.dev"

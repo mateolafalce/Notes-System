@@ -1,12 +1,12 @@
 [package]
-name = "commonmarket"
+name = "notes_system"
 version = "0.1.0"
-description = "The International Common Market"
+description = "Notes System"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "commonmarket"
+name = "notes_system"
 
 [features]
 no-entrypoint = []
