@@ -9,8 +9,9 @@ pub fn student_register(
     ctx: Context<StudentRegister>,
     name: String,
     lastname: String,
-    year: u8
+    trimester: u8,
 ) -> Result<()> {
+    require!(trimester > 0, ErrorCode::TrimesterError);
     require!(name.len() <= 50, ErrorCode::LenghtError);
     require!(lastname.len() <= 50, ErrorCode::LenghtError);
     require!(ctx.accounts.user.key() == ctx.accounts.school.admin.key(), ErrorCode::AuthorityError);
@@ -19,9 +20,8 @@ pub fn student_register(
     student.bump_original = bump;
     student.name = name;
     student.lastname = lastname;
-    student.year = year;
-    student.notes = [].to_vec();
-    student.number =ctx.accounts.school.student_number;
+    student.trimester = trimester;
+    student.number = ctx.accounts.school.student_number;
     let school: &mut Account<SchoolAccount> = &mut ctx.accounts.school;
     school.student_number += 1;
     school.total_students += 1;

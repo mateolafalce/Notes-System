@@ -29,11 +29,36 @@ pub mod notes_system {
         ctx: Context<StudentRegister>,
         name: String,
         lastname: String,
+        trimester: u8
     ) -> Result<()> {
         instructions::student_register::student_register(
             ctx,
             name,
-            lastname
+            lastname,
+            trimester
+        )
+    }
+    pub fn school_notes(
+        ctx: Context<SchoolNotes>,
+        philosophy: i8,
+        english: i8,
+        biology: i8,
+        physical: i8,
+        chemistry: i8,
+        mathematics: i8,
+        work_and_citizenship: i8,
+        deports: i8,
+    ) -> Result<()> {
+        instructions::school_notes::school_notes(
+            ctx,
+            philosophy,
+            english,
+            biology,
+            physical,
+            chemistry,
+            mathematics,
+            work_and_citizenship,
+            deports,
         )
     }
 }

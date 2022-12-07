@@ -19,16 +19,32 @@ pub struct SchoolAccount {
 
 #[account]
 pub struct StudentAccount { 
-    pub bump_original: u8,          // 1
-    pub name: String,               // 4 + 50
-    pub lastname: String,           // 4 + 50
-    pub number: u64,                // 8
-    pub year: u8                    // 1
-    pub notes: Vec<i8>              // 4 + 1
+    pub bump_original: u8,              // 1
+    pub name: String,                   // 4 + 50
+    pub lastname: String,               // 4 + 50
+    pub number: u64,                    // 8
+    pub trimester: u8,                  // 1
+}
+
+#[account]
+pub struct NotesAccount { 
+    pub bump_original: u8,              // 1
+    pub philosophy: Vec<i8>,            // 4 + 1
+    pub english: Vec<i8>,               // 4 + 1
+    pub biology: Vec<i8>,               // 4 + 1
+    pub physical: Vec<i8>,              // 4 + 1
+    pub chemistry: Vec<i8>,             // 4 + 1
+    pub mathematics: Vec<i8>,           // 4 + 1
+    pub work_and_citizenship: Vec<i8>,  // 4 + 1
+    pub deports: Vec<i8>,               // 4 + 1
 }
 
 impl StudentAccount {
-    pub const SIZE: usize =  1 + 32 + 4 + 50 + 4 + 50 + 8 + 1 + 4 + 1;
+    pub const SIZE: usize =  1 + 32 + 4 + 50 + 4 + 50 + 8 + 1;
+}
+
+impl NotesAccount {
+    pub const SIZE: usize = 1 + 32 + 8;
 }
 
 impl SchoolAccount {
